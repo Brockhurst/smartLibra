@@ -1,0 +1,98 @@
+body {
+  color: black;
+  font-family: 'Open Sans', sans-serif; }
+
+.navbar {
+  overflow: hidden;
+  padding: 5px 20px;
+  font-size: 1.25em; }
+  @media only screen and (min-width: 321px) and (max-width: 767px) {
+    .navbar {
+      text-align: center; } }
+
+.navbar-brand {
+  display: inline-block;
+  width: 3.125em;
+  height: 3.1875em;
+  background-image: url("../img/logo.png");
+  background-size: 100% 100%; }
+  @media only screen and (min-width: 321px) and (max-width: 767px) {
+    .navbar-brand {
+      float: none; } }
+
+.device {
+  position: relative; }
+  .device .device-name {
+    font-size: 1.25em; }
+  .device i {
+    font-size: 2.5em;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    left: 0;
+    text-align: center; }
+  .device a {
+    color: black; }
+
+.results-list {
+  max-height: 1000px;
+  overflow: auto; }
+  .results-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    color: white; }
+    .results-list li.fake {
+      background-color: #ff4c4c; }
+    .results-list li.undefined {
+      background-color: #8c8c8c; }
+    .results-list li.success {
+      background-color: #99cc99; }
+  .results-list .result-img {
+    height: 6.25em;
+    width: 6.25em;
+    background-image: url("http://calm-temple-20803.herokuapp.com/system/results/pics/000/000/001/original/pic3.jpg?1465037919");
+    background-size: cover;
+    border-radius: 50%; }
+  .results-list .result-content {
+    flex-grow: 1; }
+  .results-list .result-content-misc {
+    display: flex;
+    justify-content: space-around; }
+  .results-list .result-name {
+    text-align: center;
+    font-size: 1.25em;
+    text-transform: uppercase;
+    margin-bottom: 20px; }
+  .results-list .result-save.disabled {
+    background-color: #e5f2e5;
+    color: black;
+    border-color: #e5f2e5; }
+  .results-list .result-save.saved {
+    background-color: #e5f2e5;
+    color: black;
+    border-color: #e5f2e5;
+    cursor: not-allowed; }
+
+.coin {
+  font-size: 1.25em; }
+  .coin .coin-img {
+    width: calc(100% - 40px);
+    margin: 20px 20px 0 20px;
+    border-radius: 50%; }
+  .coin .coin-name {
+    text-transform: uppercase;
+    text-align: center; }
+  .coin .coin-attributes {
+    list-style: none;
+    padding: 20px 10px; }
+  .coin .coin-attributes li {
+    font-style: italic; }
+  .coin .coin-attribute-title {
+    font-weight: bold; }
+  .coin .coin-price {
+    text-align: center;
+    padding-bottom: 10px; }
+  .coin .coin-sell {
+    width: 100%;
+    border-radius: 4px; }

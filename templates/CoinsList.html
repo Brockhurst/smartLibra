@@ -1,0 +1,21 @@
+<% if(coins.length === 0){ %>
+<p>You have no saved coins yet</p>
+<% }%>
+<div class="coins-list row">
+  <% _.each(coins, function(coin){ %>
+  <div class="col-sm-4 col-md-3">
+    <div class="panel panel-default coin">
+      <div class="panel-heading coin-name"><%= coin.get('name') %></div>
+      <img src= "<%= SERVER_URL + coin.get('pic')%>" class="coin-img">
+      <!--<div class="coin-img"></div>-->
+      <ul class="coin-attributes">
+        <li><span class="coin-attribute-title">Year: </span><%=  new Date(coin.get('release_year')).getFullYear() %></li>
+        <li><span class="coin-attribute-title">Radius: </span><%= coin.get('radius') %> cm</li>
+        <li><span class="coin-attribute-title">Weight: </span><%= coin.get('weight') %> g</li>
+      </ul>
+      <div class="coin-price">Sell for: 20 $</div>
+      <button type="button" class="btn btn-success btn-lg coin-sell">Sell</button>
+    </div>
+  </div>
+  <% }); %>
+</div>

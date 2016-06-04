@@ -1,0 +1,26 @@
+<% if(results.length === 0){ %>
+  <p>There are no results yet</p>
+<% }%>
+<ul class="results-list">
+  <% _.each(results, function(result){ %>
+  <% var reject = result.get('status') === 'success' ? '' : 'disabled'%>
+    <li class="panel panel-default <%= result.get('status') %>" >
+      <div class="result-img"></div>
+
+      <div class="result-content">
+
+        <div class="result-name"><%= result.get('name') %></div>
+
+        <div class="result-content-misc">
+          <div>Analysis date: <%= new Date(Date.parse(result.get('created_at'))).toUTCString() %></div>
+          <div>Weight: <%= result.get('weight') %> g</div>
+        </div>
+
+      </div>
+
+      <button type="button" class="btn btn-success result-save <%= reject %> <%= result.get('saved') ? 'saved':'' %>" data-id="<%= result.get('id') %>">
+        <%= result.get('saved') ? 'Added':'Save' %>
+      </button>
+    </li>
+  <% }); %>
+</ul>
