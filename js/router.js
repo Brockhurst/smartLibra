@@ -9,11 +9,12 @@ define([
   'views/MenuView',
   'models/ResultCollection',
   'models/CoinsCollection',
+  'models/CoinModel',
   'models/ResultModel',
   'models/DeviceModel',
   'text!../../templates/Menu.html',
   'dispatcher'
-], function($, _, Backbone, ResultsListView, CoinsListView, LoginView, DeviceView, MenuView, ResultCollection, CoinsCollection, ResultModel, Device, MenuTemplate, dispatcher){
+], function($, _, Backbone, ResultsListView, CoinsListView, LoginView, DeviceView, MenuView, ResultCollection, CoinsCollection, CoinModel, ResultModel, Device, MenuTemplate, dispatcher){
   var AppRouter = Backbone.Router.extend({
     routes: {
       '': 'showHistory',
@@ -51,6 +52,20 @@ define([
     app_router.listener.listenTo(dispatcher, 'DeviceAdded', function (device) {
       deviceView.render(device);
     });
+    
+    app_router.listener.listenTo(dispatcher, 'SaveCoin', function (coin) {
+      var newCoin  = new CoinModel();
+      newCoin.addNew(coin);
+    });
+
+    app_router.listener.listenTo(dispatcher, 'CoinSaved', function (id) {
+      resultsListView.markSaved(id);
+    });
+
+    app_router.listener.listenTo(dispatcher, 'AddDevice', function () {
+      var device  = new DeviceModel();
+      device.addNew();
+    });
 
     app_router.listener.listenTo(dispatcher, 'Refresh', function (device) {
       results.fetch({
@@ -62,6 +77,10 @@ define([
     });
 
     app_router.listener.listenTo(dispatcher, 'TabChanged', function (tab) {
+      if (tab === 'Sign out') {
+        app_router.navigate('login', {trigger: true});
+        return;
+      }
       app_router.navigate(tab.toLowerCase(), {trigger: true});
     });
 
@@ -113,11 +132,7 @@ define([
       console.log('No route:', actions);
     });
     
-    Backbone.history.start({
-
-    });
+    Backbone.history.start({});
   };
-  return {
-    initialize: initialize
-  };
+  return {initialize: initialize};
 });

@@ -1,14 +1,29 @@
 body {
-  color: black;
-  font-family: 'Open Sans', sans-serif; }
+  color: #4c4c00;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #ffffe5; }
+
+.container {
+  padding-top: 20px; }
 
 .navbar {
   overflow: hidden;
   padding: 5px 20px;
-  font-size: 1.25em; }
+  font-size: 1.25em;
+  border-bottom-color: #ffff7f;
+  margin-bottom: 0;
+  background-color: #ffffb2; }
   @media only screen and (min-width: 321px) and (max-width: 767px) {
     .navbar {
       text-align: center; } }
+
+.navbar-nav > .coins.active > a,
+.navbar-nav > .coins.active > a:hover,
+.navbar-nav > .coins.active > a:active,
+.navbar-nav > .coins.active > a:focus {
+  background-color: transparent;
+  color: black;
+  border-bottom: 1px solid black; }
 
 .navbar-brand {
   display: inline-block;
@@ -22,6 +37,15 @@ body {
 
 .device {
   position: relative; }
+  .device .add-form {
+    display: flex; }
+    .device .add-form input {
+      flex-grow: 1;
+      font-size: 18px;
+      padding: 10px 16px;
+      height: 50px; }
+  .device .add-desc {
+    font-size: 1.25em; }
   .device .device-name {
     font-size: 1.25em; }
   .device i {
@@ -32,7 +56,12 @@ body {
     left: 0;
     text-align: center; }
   .device a {
-    color: black; }
+    color: #4c4c00; }
+
+.result-message {
+  padding: 20px 0;
+  font-size: 1.25em;
+  text-align: center; }
 
 .results-list {
   max-height: 1000px;
@@ -51,7 +80,6 @@ body {
   .results-list .result-img {
     height: 6.25em;
     width: 6.25em;
-    background-image: url("http://calm-temple-20803.herokuapp.com/system/results/pics/000/000/001/original/pic3.jpg?1465037919");
     background-size: cover;
     border-radius: 50%; }
   .results-list .result-content {
@@ -66,13 +94,18 @@ body {
     margin-bottom: 20px; }
   .results-list .result-save.disabled {
     background-color: #e5f2e5;
-    color: black;
+    color: #4c4c00;
     border-color: #e5f2e5; }
   .results-list .result-save.saved {
     background-color: #e5f2e5;
-    color: black;
+    color: #4c4c00;
     border-color: #e5f2e5;
     cursor: not-allowed; }
+
+.panel-default > .panel-heading {
+  color: #4c4c00;
+  background-color: #ffffb2;
+  border-color: #b2b200; }
 
 .coin {
   font-size: 1.25em; }

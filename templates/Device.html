@@ -3,7 +3,7 @@
       <img src="../img/libra.png" alt="" height="200px">
   </div>
   <div class="col-xs-6 col-md-3 device-name">
-    <%= device.get('name') %>
+    <%= device.get('name') || device.name %>
   </div>
   <a href="#" id="refresh">
     <i class="fa fa-refresh" aria-hidden="true"></i>

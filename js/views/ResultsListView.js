@@ -2,8 +2,9 @@ define([
   'jquery',
   'underscore',
   'backbone',
+  'dispatcher',
   'text!../../templates/ResultsList.html'
-], function($, _, Backbone, resultsListTemplate){
+], function($, _, Backbone, dispacther, resultsListTemplate){
   var ResultsListView = Backbone.View.extend({
     el: $('.results'),
 
@@ -24,30 +25,25 @@ define([
     
     saveResult: function (e) {
       e.preventDefault();
-      var id = $(e.target).attr('data-id');
-      var coin;
-      _.each(this.collection, function(result){
-        if (result.get('id') == id) {
-          coin = result;
-        }
-      });
-      $.ajax({
-            method: "POST",
-            url: SERVER_URL + "/coins",
-            data: {user_id: localStorage.getItem('id'), coin: {
-              name: coin.get('name'),
-              release_year: coin.get('release_year'),
-              weight: coin.get('weight'),
-              radius: coin.get('radius'),
-              result_id: coin.get('id')
-            }}
-          })
-          .done(function( msg ) {
-            alert('success');
-            $('button[data-id=' + id +']').addClass('saved');
-            $('button[data-id=' + id +']').html('Added');
-          });
 
+      if (!($(e.target).hasClass('saved'))) {
+        var id = $(e.target).attr('data-id');
+        var coin;
+        _.each(this.collection, function(result){
+          if (result.get('id') == id) {
+            coin = result;
+          }
+        });
+
+        dispacther.trigger('SaveCoin', coin);
+      }
+
+    },
+
+    markSaved: function (id) {
+      alert('success');
+      $('button[data-id=' + id +']').addClass('saved');
+      $('button[data-id=' + id +']').html('Added');
     }
 
   });

@@ -6,7 +6,7 @@ define([
   'dispatcher'
 ], function($, _, Backbone, LoginTemplate, dispatcher){
   var LoginView = Backbone.View.extend({
-    el: $('body'),
+    el: $('.container'),
 
     events: {
       'click #login-form-link' : 'swapLogin',
@@ -17,6 +17,7 @@ define([
 
     render: function(){
       var data = {};
+      this.$el.empty();
       var compiledTemplate = _.template( LoginTemplate, data );
       this.$el.append( compiledTemplate );
     },

@@ -5,6 +5,9 @@ $large: 768px;
 $fake: #ff4c4c;
 $undefined: #8c8c8c;
 $success: #99cc99;
+$main: #ffffb2;
+$secondary: #ffffe5;
+$text: darken($main, 70%);
 
 @function em($pixels, $context: $browser-context) {
   @if (unitless($pixels)) {
@@ -33,15 +36,32 @@ $success: #99cc99;
 
 //----------------------------------------------------------------------------------------------------
 body {
-  color: black;
+  color: $text;
   font-family: 'Open Sans', sans-serif;
+  background-color: $secondary;
+}
+
+.container {
+  padding-top: 20px;
 }
 
 .navbar {
   overflow: hidden;
   padding: 5px 20px;
   font-size: em(20px);
+  border-bottom-color: darken($secondary, 20%);
+  margin-bottom: 0;
+  background-color: $main;
   @include respond-to(medium-screens) { text-align: center }
+}
+
+.navbar-nav>.coins.active>a,
+.navbar-nav>.coins.active>a:hover,
+.navbar-nav>.coins.active>a:active,
+.navbar-nav>.coins.active>a:focus {
+  background-color: transparent;
+  color: black;
+  border-bottom: 1px solid black;
 }
 
 .navbar-brand {
@@ -55,6 +75,20 @@ body {
 
 .device {
   position: relative;
+
+  .add-form {
+    display: flex;
+    input {
+      flex-grow: 1;
+      font-size: 18px;
+      padding: 10px 16px;
+      height: 50px;
+    }
+  }
+
+  .add-desc {
+    font-size: em(20px);
+  }
 
   .device-name {
     font-size: em(20);
@@ -70,11 +104,17 @@ body {
   }
 
   a {
-    color: black;
+    color: $text;
   }
 }
 
 // -------------------------------RESULTS-------------------------------
+
+.result-message {
+  padding: 20px 0;
+  font-size: em(20px);
+  text-align: center;
+}
 
 .results-list {
   max-height: 1000px;
@@ -98,7 +138,6 @@ body {
   .result-img {
     height: em(100px);
     width: em(100px);
-    background-image: url("http://calm-temple-20803.herokuapp.com/system/results/pics/000/000/001/original/pic3.jpg?1465037919");
     background-size: cover;
     border-radius: 50%;
   }
@@ -122,13 +161,13 @@ body {
   .result-save {
     &.disabled {
       background-color: #e5f2e5;
-      color: black;
+      color: $text;
       border-color: #e5f2e5;
     }
 
     &.saved {
       background-color: #e5f2e5;
-      color: black;
+      color: $text;
       border-color: #e5f2e5;
       cursor: not-allowed;
     }
@@ -136,7 +175,11 @@ body {
 
 }
 // -------------------------------COINS-------------------------------
-
+.panel-default>.panel-heading {
+  color: $text;
+  background-color: $main;
+  border-color: lighten($text, 20%);
+}
 
 .coin {
   font-size: em(20);

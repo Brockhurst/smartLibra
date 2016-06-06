@@ -1,5 +1,5 @@
-// var SERVER_URL = 'http://calm-temple-20803.herokuapp.com';
-var SERVER_URL = 'http://192.168.0.87:3000';
+var SERVER_URL = 'http://fast-fortress-60701.herokuapp.com';
+// var SERVER_URL = 'http://192.168.0.87:3000';
 require.config({
   paths: {
     jquery: 'libs/jquery/jquery-1.12.3.min',

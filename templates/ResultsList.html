@@ -1,11 +1,11 @@
 <% if(results.length === 0){ %>
-  <p>There are no results yet</p>
+  <p class="result-message">There are no results yet</p>
 <% }%>
 <ul class="results-list">
   <% _.each(results, function(result){ %>
   <% var reject = result.get('status') === 'success' ? '' : 'disabled'%>
     <li class="panel panel-default <%= result.get('status') %>" >
-      <div class="result-img"></div>
+      <div class="result-img" style="background-image: url(<%= result.get('pic') %>)"></div>
 
       <div class="result-content">
 

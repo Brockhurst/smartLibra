@@ -2,10 +2,11 @@ define([
   'jquery',
   'underscore',
   'backbone',
+  'models/DeviceModel',
   'text!../../templates/Device.html',
   'text!../../templates/AddDevice.html',
   'dispatcher'
-], function($, _, Backbone, deviceTemplate, addTemplate, dispatcher){
+], function($, _, Backbone, DeviceModel, deviceTemplate, addTemplate, dispatcher){
   var DeviceView = Backbone.View.extend({
     el: $('.device'),
 
@@ -32,16 +33,7 @@ define([
 
     addDevice: function (e) {
       e.preventDefault();
-      $.ajax({
-            method: "POST",
-            url: SERVER_URL + "/devices",
-            data: {user_id: localStorage.getItem('id')}
-          })
-          .done(function(device) {
-            if (device) {
-              dispatcher.trigger('DeviceAdded', device);
-            }
-          });
+      dispatcher.trigger('AddDevice');
     },
     
     refresh: function (e) {
